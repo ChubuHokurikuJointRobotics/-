@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1100">
+<title>中部北陸ロボット合同親睦会</title>
+<meta name="description" content="中部北陸ロボット合同親睦会（中北合同会・中北ロボコン）公式案内ページ">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== フォント ===== */
+body{
+  font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", "Meiryo", Arial, sans-serif;
+}
+h1,h2,h3,.tabs a{
+  font-family:"Montserrat", Arial, sans-serif;
+}
+
+/* ===== 1色アクセント（白以外はこの色のみ） ===== */
+:root{
+  --accent:#4da6ff; /* ←唯一の色（白除く） */
+  --w:1280px;
+  --sidebar:310px;
+  --pad:20px;
+}
+
+/* ===== ベース ===== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:#fff;
+  /* 明るい・カラフル背景（色は背景専用。UIの配色は1色アクセント） */
+  background:
+    radial-gradient(900px 520px at 20% 10%, rgba(255, 0, 140, .28), transparent 60%),
+    radial-gradient(900px 520px at 80% 15%, rgba(0, 200, 255, .28), transparent 60%),
+    radial-gradient(900px 520px at 50% 80%, rgba(0, 255, 140, .22), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  background-attachment: fixed;
+}
+
+/* 水滴（CSSパターン。窓の水滴っぽい粒感） */
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.30) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.22) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 70% 40%, rgba(255,255,255,.26) 0 2px, transparent 3px),
+    radial-gradient(circle at 35% 70%, rgba(255,255,255,.18) 0 1.2px, transparent 2.2px),
+    radial-gradient(circle at 80% 75%, rgba(255,255,255,.20) 0 1.4px, transparent 2.4px),
+    radial-gradient(circle at 10% 80%, rgba(255,255,255,.18) 0 1.2px, transparent 2.2px);
+  background-size: 260px 260px;
+  opacity:.55;
+  filter: blur(.15px);
+}
+
+/* 中央コンテナ：ガラス風 */
+.content{
+  width:var(--w);
+  margin:18px auto 26px;
+  padding:12px;
+  border-radius:18px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+
+/* リンク：アクセント1色 */
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ヘッダー */
+.header{
+  padding:22px 28px 10px;
+}
+.header h1{
+  margin:0 0 6px;
+  font-size:56px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.header .desc{
+  margin:0;
+  font-size:20px;
+  line-height:1.55;
+  opacity:.92;
+}
+
+/* アクセントライン（1色） */
+.accent-line{
+  height:3px;
+  background: linear-gradient(to right, var(--accent), rgba(255,255,255,.00));
+  margin:12px 28px 18px;
+}
+
+/* メニュー */
+.tabs{
+  margin:0 18px 16px;
+}
+.tabs ul{list-style:none; margin:0; padding:0}
+.tabs li{display:inline-block}
+.tabs a{
+  display:inline-block;
+  padding:.5em 1em;
+  font-size:18px;
+  font-weight:600;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+}
+.tabs a:hover,
+.tabs a.is-current{
+  background: rgba(77,166,255,.18);
+  border-color: rgba(77,166,255,.55);
+  color:#fff;
+  text-decoration:none;
+}
+
+/* 疑似ページ */
+.page{padding:16px 18px}
+.view{display:none}
+.view.is-active{display:block}
+
+/* 記事 */
+.post{
+  background: rgba(0,0,0,.42);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  padding:18px 22px;
+  margin-bottom:18px;
+}
+.post.featured{
+  border-left:6px solid var(--accent);
+}
+.post-title{
+  margin:0 0 12px;
+  font-size:32px;
+  font-weight:700;
+}
+.post-body{
+  line-height:1.8;
+  font-size:17px;
+}
+.post-body h3{
+  margin:22px 0 10px;
+  font-size:20px;
+  font-weight:700;
+}
+
+/* 強調（色は使わず、太字＋アクセント下線） */
+.strong{font-weight:700}
+.accent{
+  border-bottom: 2px solid rgba(77,166,255,.75);
+  padding-bottom:1px;
+}
+.note{opacity:.88}
+
+/* 協賛企業：中央・大きく・太字 */
+.sponsor{
+  text-align:center;
+  margin:22px 0 26px;
+}
+.sponsor div{
+  font-size:26px;
+  font-weight:700;
+  margin:14px 0;
+}
+
+/* PAGE UP */
+.page-up{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(77,166,255,.60);
+  color:#fff;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  backdrop-filter: blur(10px);
+}
+.page-up:hover{
+  background: rgba(77,166,255,.18);
+}
+
+/* フッター */
+.footer-note{
+  text-align:center;
+  padding:14px 10px 6px;
+  font-size:13px;
+  opacity:.75;
+}
+</style>
+</head>
+
+<body>
+<div class="content">
+
+  <div class="header">
+    <h1>中部北陸ロボット合同親睦会</h1>
+    <p class="desc">
+      中部・北陸地区のロボット競技に取り組む学生チームが集い、
+      交流と相互理解を深めることを目的とした合同親睦会です。
+    </p>
+  </div>
+
+  <div class="accent-line"></div>
+
+  <nav class="tabs">
+    <ul>
+      <li><a href="#home" data-page="home" class="is-current">ホーム</a></li>
+      <li><a href="#about" data-page="about">親睦会とは？</a></li>
+      <li><a href="#sponsor" data-page="sponsor">ご協賛</a></li>
+      <li><a href="#apply" data-page="apply">お申込み</a></li>
+      <li><a href="#mini" data-page="mini">ミニロボコン（第十回）</a></li>
+      <li><a href="#contact" data-page="contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <section id="view-home" class="view is-active page">
+  <article class="post featured">
+    <h3 class="post-title">第十回 中部北陸ロボット合同親睦会</h3>
+
+    <div class="post-body">
+      <p class="note">更新が空いてしまい、誠に申し訳ありません。</p>
+
+      <p>
+        本年度で <span class="strong accent">第10回目</span> となる<br>
+        <span class="strong">中部北陸ロボット合同親睦会</span> を開催いたします。
+      </p>
+
+      <p>
+        本親睦会は、ロボット製作や技術交流に興味を持つ学生同士が集まり、<br>
+        競技や展示、交流を通じて互いに刺激を受け、学び合うことを目的としています。
+      </p>
+
+      <p>
+        節目となる第10回では、これまでのつながりを大切にしつつ、<br>
+        より多くの参加者が楽しめる場となるよう企画を進めています。
+      </p>
+
+      <p>
+        初めて参加される方や、ロボット製作の経験が浅い
+        <span class="strong">1年生の参加も大歓迎</span> です。<br>
+        経験や知識の有無に関わらず、安心して参加できる雰囲気づくりを大切にしています。
+      </p>
+
+      <p>
+        また、中部・北陸地区に限らず、他地区からの参加も歓迎しており、<br>
+        普段は関わる機会の少ない学校や学生との交流の場としてもご活用いただけます。
+      </p>
+
+      <p>
+        ロボットを通じた交流だけでなく、<br>
+        情報交換や相談、将来の活動につながる出会いの場となることを目指しています。
+      </p>
+
+      <h3><span class="accent">開催時期</span></h3>
+      <p>2026年2月中旬（予定）</p>
+
+      <p class="note">
+        詳細な日程や内容については、決まり次第あらためてご案内いたします。
+      </p>
+    </div>
+  </article>
+</section>
+
+
+  <!-- ABOUT -->
+  <section id="view-about" class="view page">
+    <article class="post">
+      <h3 class="post-title">中部北陸ロボット合同親睦会とは？</h3>
+      <div class="post-body">
+        <p>
+          本交流会は、<span class="strong">NHK高専ロボコンに参加する東海北陸地区にあるロボコンチームの交流会</span>です。
+          中北合同会や中北ロボコンと呼ばれています。
+        </p>
+        <p>
+          毎年、2月中旬（高専入試日前後）に愛知県や岐阜県、静岡県などの東海地区にて3泊4日で開催しております。
+          普段は話をすることのない他の高専のロボコニストやOB・OGが集い、
+          直接会って話すことで知識や技術力の向上、学校の枠をこえて親交を深めることと、
+          東海・北陸地区全体で発展していくことを目的としています。
+        </p>
+        <p>
+          全国大会終了後に参加者募集があり、交流会ではブース展示やプレゼン、ミニロボコンなど様々なイベントを用意しています。
+        </p>
+
+        <h3><span class="accent">ブース展示</span></h3>
+        <p>
+          参加者のブース展示と企業ブース展示があります。ブース展示を行うには、申し込みが必要です。<br>
+          NHK高専ロボコンで使用した技術などを展示し、他高専の参加者に見せびらかしちゃいましょう！
+        </p>
+
+        <h3><span class="accent">プレゼン</span></h3>
+        <p>
+          参加者のプレゼンと企業プレゼンがあります。<br>
+          様々なテーマについてプレゼンを行える時間を用意しています。機械系・電気系・マネジメントなど自分の興味があるプレゼンを聞き、知識を増やしましょう！<br>
+          質疑の時間があったりなかったりするので、為になること間違いなし！！<br>
+          上級生の皆さんはプレゼンを行い、自分の高専のやり方などを布教してください。<br>
+          なお、プレゼンを行うには、申し込みが必要です。
+        </p>
+
+        <h3><span class="accent">ミニロボコン</span></h3>
+        <p>
+          ミニロボコンとは、交流会で行われる飴玉ラッシュ・足軽ロボコンの２つのことを指します。<br>
+          飴玉ラッシュは１年生を含めた下級生を対象としています。学んだことを実践に生かすことで経験を積んでもらうことが目的です。<br>
+          足軽ロボコンは主に上級生を対象にしています。タイムトライアル競技で、戦略が重要となるルールを用意しています。
+        </p>
+
+        <h3><span class="accent">運営について</span></h3>
+        <p>
+          運営は現役の学生（高専生）により行われています。<br>
+          協賛企業様などのご協力を得て、交流会がスムーズに進行し、参加学生にとって有益なものになるようにサポートしています。<br>
+          毎年、交流会開催日に次年度の幹事を募集しています。
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- SPONSOR -->
+  <section id="view-sponsor" class="view page">
+    <article class="post">
+      <h3 class="post-title">ご協賛</h3>
+      <div class="post-body">
+        <p>以下の企業様よりご協賛をいただいております。</p>
+
+        <div class="sponsor">
+          <div>ローム株式会社　様</div>
+          <div>ソリッドワークス・ジャパン株式会社　様</div>
+          <div>STマイクロエレクトロニクス株式会社　様</div>
+        </div>
+        <p>以下の企業様よりご協賛をいただいております。</p>
+        <!-- 協賛ロゴここから -->
+<div class="sponsor-logos">
+  <div class="sponsor-logo">
+    <img src="images/sponsor-st.png" alt="STマイクロエレクトロニクス株式会社">
+  </div>
+
+  <div class="sponsor-logo">
+    <img src="images/sponsor-solidworks.png" alt="ソリッドワークス・ジャパン株式会社">
+  </div>
+
+  <div class="sponsor-logo">
+    <img src="images/sponsor-rohm.png" alt="ローム株式会社">
+  </div>
+</div>
+<!-- 協賛ロゴここまで -->
+
+
+        <h3><span class="accent">協賛について</span></h3>
+        <p>
+          東海北陸ロボコン交流会は企業様に、協賛という形で企業様のロゴ入り記念品や協賛金などでご支援をいただいております。
+        </p>
+        <p>
+          いただいた記念品は本交流会で行われるミニロボの景品や参加記念品に、協賛金は交流会の運営・参加する学生の交通費の補助として使用させていただいております。
+        </p>
+        <p>
+          また、ご協賛いただきました企業様には、交流会でブース展示やプレゼンをしていただいたり、参加者への配布資料に広告を挟んでいただいたり、本交流会のホームページに企業様のお名前・URLなどを掲載せていただいております。
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- APPLY -->
+  <section id="view-apply" class="view page">
+  <article class="post">
+    <h3 class="post-title">第十回開催情報（2025年度）</h3>
+
+    <div class="post-body">
+      <p class="strong">
+        申し込み締め切り：<span class="accent">2025年12月31日</span>
+      </p>
+
+      <p>
+        「<span class="strong">東海北陸ロボコン交流会ってなに？</span>」という方は、
+        <a href="#about" data-page="about">こちら</a> をご参照ください。
+      </p>
+
+      <h3><span class="accent">〇 申し込みフォーム</span></h3>
+      <p>
+        東海北陸ロボコン交流会に参加される方は、
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuiqjy7g9muwljYuAl-G4AARBO7vTf-7dtiNB_uf9uiwiCsg/viewform"
+           target="_blank" rel="noopener">
+          <span class="strong">こちらのフォーム</span>
+        </a>
+        よりお申込みください。
+      </p>
+      <p class="note">
+        ※ OB・OGの方も同じフォームからお申込みください。
+      </p>
+
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,.2);margin:28px 0;">
+
+      <h3><span class="accent">～～～～詳細～～～～</span></h3>
+
+      <h3><span class="accent">開催日時</span></h3>
+      <p>2026年 2月06日（金）～ 2月09日（月）</p>
+
+      <h3><span class="accent">参加費</span></h3>
+      <p>1人　5,000円</p>
+
+      <h3><span class="accent">ミニロボコン</span></h3>
+      <p>
+        令和7年度ミニロボコンは、例年から大きく趣向を変えた
+        <span class="strong">新競技</span>として開催します。
+      </p>
+      <p>
+        競技課題『<span class="strong">Switch &amp; Struggle</span>』では、
+        スイッチや可動ギミックを操作し、
+        刻々と変化するフィールド状況の中で得点を競います。
+      </p>
+      <p>
+        <span class="strong">状況判断</span>、
+        <span class="strong">戦略の切り替え</span>、
+        <span class="strong">ロボットの完成度</span>
+        が勝敗を左右する競技です。
+      </p>
+      <p>
+        若手の挑戦と実践の場として企画していますが、
+        <span class="strong">学年を問わず参加を歓迎</span>しています。
+      </p>
+      <p>
+        詳しい競技内容、ルール、スケジュール、参加方法については
+        <a href="#mini" data-page="mini">ミニロボコンページ</a>
+        をご覧ください。
+      </p>
+
+      <h3><span class="accent">交通費補助</span></h3>
+      <p>
+        参加学生に対し、交通費の一部を
+        <span class="strong">交通費補助</span>として支給しています。
+      </p>
+      <p class="note">※ OB・OGの方は交通費補助の対象外です。</p>
+
+      <h3><span class="accent">キャンセル</span></h3>
+      <p>
+        キャンセルされる場合は、
+        <span class="strong">必ず事前にご連絡</span>ください。
+      </p>
+      <h3><span class="accent">しおり（当日案内）について</span></h3>
+
+<p>
+  当日の進行や注意事項をまとめた
+  <span class="strong">しおり（PDF）</span>は、
+  安全管理の観点から、
+  <span class="strong">参加登録時にご登録いただいた学校の代表者の方のみに送付</span>いたします。
+</p>
+
+<p>
+  参加者の皆様には、
+  <span class="strong">代表者の方を通じて内容をご確認いただく形</span>となりますので、
+  あらかじめご了承ください。
+</p>
+<p class="note">
+  ※ 個別での配布や再送対応は行っておりません。
+</p>
+
+    </div>
+  </article>
+</section>
+
+
+  <!-- MINI -->
+  <section id="view-mini" class="view page">
+    <article class="post">
+      <h3 class="post-title">ミニロボコン（第十回）</h3>
+      <div class="post-body">
+        <p class="strong accent">大変お待たせいたしました。</p>
+        <p class="strong accent">令和7年度ミニロボコンの情報解禁です！</p>
+        <p>今年度は例年から大きく趣向を変えて作成しました！</p>
+
+        <h3><span class="accent">ルール</span></h3>
+        <p>今回の競技課題名は</p>
+        <p class="strong" style="font-size:120%;">『Switch &amp; Struggle』</p>
+
+        <p>
+          フィールド内に配置された複数のスイッチ・可動ギミックを操作し、
+          エリアの有利不利を切り替えながら得点を競う競技です。
+        </p>
+        <p>
+          相手の行動によってフィールド状況が刻々と変化するため、
+          <span class="strong">状況判断・妨害・戦略の切り替え</span>が重要となります。
+        </p>
+        <p>
+          ルールブックのスタイルも一新し、なるべくNHK高専ロボコンに近い物を作成しました。
+        </p>
+
+        <p>
+          小さくてもロボットに求められることは同じです。<br>
+          競技での戦略性、それを実行する正確さ、そして見るものを驚かせる発想力です。
+        </p>
+
+        <p>
+          小さな機体に詰め込んだ機構と制御で存分に課題に挑んで下さい。<br>
+          また、競技を通じて参加者同士の交流を深めてください。
+        </p>
+
+        <p>
+          若手の挑戦・実践の場をコンセプトとして作成しましたが、高学年の出場も歓迎しております。<br>
+          ぜひその小さなロボットに、あふれんばかりの技術と情熱を詰め込んでください！
+        </p>
+
+        <p>所属、学年を超えた交流、成長の機会となってくれれば幸いです。</p>
+
+        <h3><span class="accent">ルール等はこちらから</span></h3>
+        <p>ルール等はこちらからご確認ください。</p>
+
+        <h3><span class="accent">スケジュール</span></h3>
+        <p>ルールブックに記載しております。ご確認ください。</p>
+
+        <h3><span class="accent">申し込み・ルールに関する質問</span></h3>
+        <p>
+          当会Discordのミニロボチャンネル内にて行っております。<br>
+          当会への参加登録・交流会Discordへの参加をお願いします。
+        </p>
+
+        <h3><span class="accent">その他質問</span></h3>
+        <p>
+          参加者の方は当会Discordのミニロボチャンネル、<br>
+          参加が確定していない方はX（旧Twitter）のDM、もしくはお問い合わせフォーム内にて受け付けております。
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="view-contact" class="view page">
+  <article class="post">
+    <h3 class="post-title">お問い合わせ</h3>
+
+    <div class="post-body">
+      <p>
+        本会に関するご質問・ご不明点等がございましたら、<br>
+        下記メールアドレスまでご連絡ください。
+      </p>
+
+      <p class="strong accent" style="font-size:20px; text-align:center; margin:24px 0;">
+        chubu.hokuriku.robot01@gmail.com
+      </p>
+
+      <p class="note">
+        内容を確認のうえ、順次ご返信いたします。
+      </p>
+    </div>
+  </article>
+</section>
+
+
+  <div class="footer-note">このページは1つのHTMLファイルで構成されています。</div>
+</div>
+
+<div class="page-up" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲ PAGE UP</div>
+
+<script>
+(function(){
+  const views=document.querySelectorAll('.view');
+  const tabs=document.querySelectorAll('.tabs a[data-page]');
+  function show(p){
+    views.forEach(v=>v.classList.remove('is-active'));
+    const t=document.getElementById('view-'+p);
+    if(t) t.classList.add('is-active');
+    tabs.forEach(a=>a.classList.toggle('is-current', a.dataset.page===p));
+    window.scrollTo({top:0});
+  }
+  tabs.forEach(a=>a.addEventListener('click',()=>show(a.dataset.page)));
+  show('home');
+})();
+</script>
+</body>
+</html>
